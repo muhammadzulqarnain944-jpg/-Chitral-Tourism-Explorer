@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#142b25">
+
+    <meta name="description"
+        content="Explore tourist attractions, valleys, mountains and cultural heritage of Chitral, Pakistan.">
+
+    <title>Chitral Tourism Explorer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- Main Website CSS -->
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+        <a href="#" class="brand">
+
+            <span class="brand-mark">C</span>
+
+            <span>
+                <strong>CHITRAL</strong>
+                <small>TOURISM EXPLORER</small>
+            </span>
+
+        </a>
+
+        <nav class="main-nav" id="main-nav">
+
+            <a href="#discover">Discover</a>
+
+            <a href="#map-section">Explore Map</a>
+
+            <a href="#about">About Chitral</a>
+
+        </nav>
+
+        <a href="#map-section" class="header-cta">
+            Start Exploring <span>↗</span>
+        </a>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+
+            ☰
+
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO SECTION -->
+
+        <section class="hero">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <p class="eyebrow light">
+                    KHYBER PAKHTUNKHWA · PAKISTAN
+                </p>
+
+                <h1>
+                    Discover<br>
+                    <em>Chitral.</em>
+                </h1>
+
+                <p class="hero-description">
+                    Explore beautiful mountain valleys,
+                    historic landmarks and the cultural
+                    heritage of the Hindu Kush.
+                </p>
+
+                <a href="#map-section" class="primary-button">
+                    Explore Destinations
+                    <span>→</span>
+                </a>
+
+            </div>
+
+            <div class="hero-caption">
+                THE HINDU KUSH · NORTHERN PAKISTAN
+            </div>
+
+        </section>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="intro-section" id="discover">
+
+            <p class="section-number">
+                01 / THE REGION
+            </p>
+
+            <div class="intro-grid">
+
+                <div>
+
+                    <p class="eyebrow">
+                        A WORLD WORTH DISCOVERING
+                    </p>
+
+                    <h2>
+                        Where mountains<br>
+                        meet <em>heritage.</em>
+                    </h2>
+
+                </div>
+
+                <div class="intro-description">
+
+                    <p>
+                        Chitral is a remarkable mountain
+                        region in northern Pakistan.
+                        From the cultural valleys of Kalash
+                        to high mountain passes and historic
+                        places, every journey offers a
+                        different experience.
+                    </p>
+
+                    <p class="muted">
+                        Use this interactive geographic
+                        guide to discover destinations
+                        and explore their locations.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- DATABASE STATISTICS -->
+
+            <div class="statistics">
+
+                <div class="stat-item">
+
+                    <strong id="stat-locations">0</strong>
+
+                    <span>TOURIST LOCATIONS</span>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <strong id="stat-categories">0</strong>
+
+                    <span>DESTINATION CATEGORIES</span>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <strong>GIS</strong>
+
+                    <span>INTERACTIVE MAPPING</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERACTIVE EXPLORER -->
+
+        <section class="explorer-section" id="map-section">
+
+            <div class="explorer-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        02 / INTERACTIVE WEB GIS
+                    </p>
+
+                    <h2>
+                        Explore <em>Chitral</em>
+                    </h2>
+
+                </div>
+
+                <p class="explorer-description">
+                    Search destinations, filter by category
+                    and select a map marker to explore
+                    detailed geographic information.
+                </p>
+
+            </div>
+
+
+            <!-- SEARCH AND FILTER -->
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input type="search" id="search-input" placeholder="Search tourist destinations...">
+
+                </div>
+
+                <div class="filter-box">
+
+                    <label for="category-filter">
+                        Category
+                    </label>
+
+                    <select id="category-filter">
+
+                        <option value="">
+                            All Categories
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button class="reset-button" id="reset-view">
+                    Reset Map ↗
+                </button>
+
+            </div>
+
+
+            <!-- MAP AND DESTINATION LIST -->
+
+            <div class="map-layout">
+
+
+                <!-- DESTINATION SIDEBAR -->
+
+                <aside class="places-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                DESTINATION DIRECTORY
+                            </p>
+
+                            <h3>Explore Places</h3>
+
+                        </div>
+
+                        <span id="result-count">
+                            Loading...
+                        </span>
+
+                    </div>
+
+                    <div id="places-list" class="places-list">
+
+                        <div class="loading-state">
+                            Loading destinations...
+                        </div>
+
+                    </div>
+
+                    <div class="panel-footer">
+
+                        Select a destination
+                        to locate it on the map.
+
+                    </div>
+
+                </aside>
+
+
+                <!-- MAP AREA -->
+
+                <div class="map-column">
+
+                    <div id="map"></div>
+
+                    <div class="map-attribution">
+                        Map data © OpenStreetMap contributors
+                    </div>
+
+
+                    <!-- LOCATION DETAILS -->
+
+                    <div class="detail-card" id="detail-card">
+
+                        <div class="detail-empty">
+
+                            <span class="detail-icon">⌖</span>
+
+                            <div>
+
+                                <strong>
+                                    Select a destination
+                                </strong>
+
+                                <p>
+                                    Select a marker or a place
+                                    from the directory to view
+                                    its details.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- WEATHER INFORMATION -->
+
+                    <div class="weather-card" id="weather-card">
+
+                        <div class="weather-heading">
+
+                            <span>LOCAL WEATHER</span>
+
+                            <small id="weather-place">
+                                Select a destination
+                            </small>
+
+                        </div>
+
+                        <div id="weather-content">
+
+                            Weather information will
+                            appear after selecting a place.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DATASET NOTE -->
+
+            <p class="data-note">
+
+                <strong>Dataset information:</strong>
+
+                Some initial coordinates in this academic
+                dataset require manual verification.
+                Confirm location accuracy before using
+                the markers for navigation.
+
+            </p>
+
+        </section>
+
+
+        <!-- ABOUT SECTION -->
+
+        <section class="about-section" id="about">
+
+            <div class="about-image"></div>
+
+            <div class="about-content">
+
+                <p class="eyebrow light">
+                    03 / DISCOVER THE REGION
+                </p>
+
+                <h2>
+                    More than a<br>
+                    destination.
+                    <em>A feeling.</em>
+                </h2>
+
+                <p>
+                    Discover the landscapes, tourist
+                    destinations and cultural heritage
+                    that make Chitral special.
+
+                    This student-built Web GIS brings
+                    geographic information into an
+                    interactive travel guide.
+                </p>
+
+                <a href="#map-section" class="text-link">
+                    Explore the Map →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+
+        <a href="#" class="brand footer-brand">
+
+            <span class="brand-mark">C</span>
+
+            <span>
+                <strong>CHITRAL</strong>
+                <small>TOURISM EXPLORER</small>
+            </span>
+
+        </a>
+
+        <p>
+            MET418 · Web GIS Academic Project
+        </p>
+
+        <span>
+            Chitral, Pakistan
+        </span>
+
+    </footer>
+
+
+    <!-- LEAFLET JAVASCRIPT -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+    <!-- MAIN WEBSITE JAVASCRIPT -->
+
+    <script src="./app.js"></script>
+
+</body>
+
+</html>
